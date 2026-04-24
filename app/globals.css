@@ -171,9 +171,9 @@ h1 { text-align: left; }
 
 .nav-cta {
   transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
-  background: var(--red) !important;
-  border-color: var(--red) !important;
-  color: white !important;
+  background: var(--dark) !important;
+  border-color: var(--dark) !important;
+  color: var(--cream) !important;
 }
 
 .nav-cta:hover {
@@ -892,7 +892,13 @@ h1 { text-align: left; }
 /* ── FOOTER ── */
 .footer {
   background: var(--cream);
-  padding: 48px var(--h-pad) 40px;
+  padding: 0 var(--h-pad) 40px;
+}
+
+.footer-pixels {
+  margin-left: calc(-1 * var(--h-pad));
+  margin-right: calc(-1 * var(--h-pad));
+  margin-bottom: 64px;
 }
 
 .footer-inner {

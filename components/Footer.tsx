@@ -91,6 +91,7 @@ export default function Footer() {
     <footer className="footer">
       <div
         ref={pixelRef}
+        className="footer-pixels"
         style={{
           display: 'grid',
           gridTemplateColumns: cols > 0 ? `repeat(${cols}, 1fr)` : 'none',
