@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 
 const PIXEL_SIZE = 80;
 const ROWS = 2;
-const FILL_RATIO = 0.42;
+const FILL_RATIO = 0.70;
 
 function shuffle<T>(arr: T[]): T[] {
   const a = [...arr];
