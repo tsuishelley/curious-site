@@ -64,7 +64,7 @@ export default async function HomePage() {
       <Link href="/approach" className="hero-image-band">
         <video
           className="hero-band-img"
-          src="/videos/leaves-rustling.mp4"
+          src={asset('/videos/leaves-rustling.mp4')}
           autoPlay
           loop
           muted
