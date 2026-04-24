@@ -1,0 +1,25 @@
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+GCP_PROJECT_ID = os.environ["GCP_PROJECT_ID"]
+BIGQUERY_DATASET = os.environ.get("BIGQUERY_DATASET", "marketing_analytics")
+
+GOOGLE_ADS_DEVELOPER_TOKEN = os.environ["GOOGLE_ADS_DEVELOPER_TOKEN"]
+GOOGLE_ADS_CLIENT_ID = os.environ["GOOGLE_ADS_CLIENT_ID"]
+GOOGLE_ADS_CLIENT_SECRET = os.environ["GOOGLE_ADS_CLIENT_SECRET"]
+GOOGLE_ADS_REFRESH_TOKEN = os.environ["GOOGLE_ADS_REFRESH_TOKEN"]
+GOOGLE_ADS_CUSTOMER_ID = os.environ["GOOGLE_ADS_CUSTOMER_ID"].replace("-", "")
+
+GA4_PROPERTY_ID = os.environ["GA4_PROPERTY_ID"]
+GA4_CLIENT_ID = os.environ["GA4_CLIENT_ID"]
+GA4_CLIENT_SECRET = os.environ["GA4_CLIENT_SECRET"]
+GA4_REFRESH_TOKEN = os.environ["GA4_REFRESH_TOKEN"]
+
+SEARCH_CONSOLE_SITE_URL = os.environ["SEARCH_CONSOLE_SITE_URL"]
+SC_CLIENT_ID = os.environ["SC_CLIENT_ID"]
+SC_CLIENT_SECRET = os.environ["SC_CLIENT_SECRET"]
+SC_REFRESH_TOKEN = os.environ["SC_REFRESH_TOKEN"]
+
+LOOKBACK_DAYS = int(os.environ.get("LOOKBACK_DAYS", 90))
