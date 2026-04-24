@@ -1103,7 +1103,7 @@ h1 { text-align: left; }
 
 .how-we-work-section {
   background: var(--cream);
-  padding: 120px 0px 0px;
+  padding: 120px 0px 100px;
 }
 
 .how-we-work-title {
