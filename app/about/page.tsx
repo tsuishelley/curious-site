@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import PixelHover from '@/components/PixelHover';
 import PageHero from '@/components/PageHero';
+import { asset } from '@/lib/basePath';
 
 export const metadata: Metadata = { title: 'About' };
 
@@ -63,7 +64,7 @@ export default function AboutPage() {
 <div className="team-grid">
           {TEAM.map((member, i) => (
             <div key={i} className="team-member" style={{ animationDelay: `${0.3 + i * 0.1}s` }}>
-              <PixelHover src={member.photo} alt={member.name} />
+              <PixelHover src={asset(member.photo)} alt={member.name} />
               <div className="team-card-body">
                 <p className="team-name">{member.name}</p>
                 <p className="team-role">{member.role}</p>
