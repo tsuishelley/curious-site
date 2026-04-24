@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ARTICLES } from '@/lib/articles';
+import ShareButton from '@/components/ShareButton';
 
 interface Props {
   params: { slug: string };
@@ -52,13 +53,7 @@ export default function ArticlePage({ params }: Props) {
             <span className="post-author">By {article.author}</span>
           )}
         </div>
-        <button className="post-share-btn">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
-            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
-          </svg>
-          Share
-        </button>
+        <ShareButton />
       </div>
 
       {/* ── Hero Image ── */}

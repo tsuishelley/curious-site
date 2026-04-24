@@ -1616,6 +1616,33 @@ h1 { text-align: left; }
 
 .post-share-btn:hover { opacity: 1; }
 
+.post-share-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.post-share-toast {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  background: rgba(49, 43, 43, 0.08);
+  color: var(--dark);
+  font-size: 14px;
+  padding: 10px 22px;
+  border-radius: 10px;
+  opacity: 0;
+  transform: translateY(-4px);
+  pointer-events: none;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+  white-space: nowrap;
+}
+
+.post-share-toast--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .post-hero-image {
   width: 100%;
   max-width: 1200px;
