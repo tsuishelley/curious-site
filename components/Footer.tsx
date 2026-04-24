@@ -3,9 +3,14 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { usePathname } from 'next/navigation';
 
-const PIXEL_SIZE = 80;
 const ROWS = 2;
 const FILL_RATIO = 0.70;
+
+const getPixelSize = (vw: number) => {
+  if (vw <= 640) return 40;
+  if (vw <= 1024) return 60;
+  return 80;
+};
 
 function shuffle<T>(arr: T[]): T[] {
   const a = [...arr];
@@ -20,6 +25,7 @@ export default function Footer() {
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [cols, setCols] = useState(0);
+  const [pixelSize, setPixelSize] = useState(80);
   const [visibleCells, setVisibleCells] = useState<Set<number>>(new Set());
   const pixelRef = useRef<HTMLDivElement>(null);
   const timersRef = useRef<ReturnType<typeof setTimeout>[]>([]);
@@ -56,9 +62,13 @@ export default function Footer() {
     setVisibleCells(new Set());
   }, [pathname]);
 
-  // Measure viewport width → cols
+  // Measure viewport width → cols + pixel size
   useEffect(() => {
-    const update = () => setCols(Math.floor(window.innerWidth / PIXEL_SIZE));
+    const update = () => {
+      const ps = getPixelSize(window.innerWidth);
+      setPixelSize(ps);
+      setCols(Math.floor(window.innerWidth / ps));
+    };
     update();
     window.addEventListener('resize', update);
     return () => window.removeEventListener('resize', update);
@@ -92,7 +102,7 @@ export default function Footer() {
         style={{
           display: 'grid',
           gridTemplateColumns: cols > 0 ? `repeat(${cols}, 1fr)` : 'none',
-          gridTemplateRows: `repeat(${ROWS}, ${PIXEL_SIZE}px)`,
+          gridTemplateRows: `repeat(${ROWS}, ${pixelSize}px)`,
         }}
       >
         {cols > 0 && Array.from({ length: cols * ROWS }, (_, i) => (

@@ -1405,35 +1405,55 @@ h1 { text-align: left; }
 /* ── Responsive — about / companies / writing ── */
 @media (max-width: 1024px) {
   .about-section { padding: 0 40px 60px; }
-  .how-we-work-section { padding: 72px 40px; }
-  .how-we-work-list { max-width: 100%; }
+  .how-we-work-section { padding: 80px 40px 120px; }
+  .how-we-work-title { font-size: 32px; margin-bottom: 40px; }
+  .how-we-work-list { margin: 0; max-width: 100%; }
+  .how-we-work-row { gap: 48px; padding: 40px 0; }
+  .how-we-work-row h3 { flex: 0 0 240px; font-size: 22px; }
+  .how-we-work-row p { font-size: 15px; }
 
   .companies-header { padding: 80px 40px 40px; gap: 40px; }
+  .companies-title { font-size: 40px; line-height: 48px; }
   .companies-portfolio { padding: 0 40px 60px; gap: 40px; }
-  .companies-name { font-size: 32px; }
+  .companies-name { font-size: 32px; line-height: 44px; }
   .minority-section { padding: 60px 40px; }
+  .minority-title { font-size: 32px; }
   .minority-grid { grid-template-columns: repeat(4, 1fr); }
 
-  .writing-section { padding: 80px 40px 60px; }
+  .writing-section { padding: 80px 40px 160px; }
   .writing-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .page-hero { padding: 80px 40px 60px; }
+  .page-hero-headline { font-size: 40px; line-height: 48px; }
+  .prose-block h2 { font-size: 24px; margin-top: 40px; }
+  .prose-block p { font-size: 16px; }
 }
 
 @media (max-width: 640px) {
   .about-section { padding: 0 24px 48px; }
   .team-grid { grid-template-columns: repeat(3, 1fr); gap: 48px 24px; }
-  .how-we-work-section { padding: 56px 24px; }
-  .how-we-work-row { flex-direction: column; gap: 12px; padding: 24px 0; }
-  .how-we-work-title { font-size: 28px; margin-bottom: 40px; }
+  .how-we-work-section { padding: 60px 24px 80px; }
+  .how-we-work-row { flex-direction: column; gap: 12px; padding: 28px 0; }
+  .how-we-work-row h3 { flex: 1 1 auto; font-size: 20px; }
+  .how-we-work-row p { font-size: 15px; }
+  .how-we-work-title { font-size: 26px; margin-bottom: 32px; }
 
   .companies-header { grid-template-columns: 1fr; padding: 60px 24px 32px; gap: 24px; }
+  .companies-title { font-size: 32px; line-height: 40px; }
   .companies-portfolio { grid-template-columns: 1fr; padding: 0 24px 48px; }
-  .companies-name { font-size: 28px; }
-  .companies-featured-box { padding: 40px 24px; }
+  .companies-name { font-size: 28px; line-height: 36px; }
+  .companies-featured-box { padding: 40px 24px; min-height: 220px; }
   .minority-section { padding: 48px 24px; }
+  .minority-title { font-size: 26px; margin-bottom: 28px; }
   .minority-grid { grid-template-columns: repeat(3, 1fr); }
 
-  .writing-section { padding: 60px 24px 48px; }
+  .writing-section { padding: 60px 24px 100px; }
   .writing-grid { grid-template-columns: 1fr; }
+
+  .page-hero { padding: 60px 24px 48px; }
+  .page-hero-headline { font-size: 30px; line-height: 38px; }
+  .prose-block h2 { font-size: 22px; margin-top: 32px; }
+  .prose-block p { font-size: 16px; line-height: 1.65; }
 }
 
 /* ── Inner Pages ── */
@@ -2002,8 +2022,10 @@ h1 { text-align: left; }
 @media (max-width: 1024px) {
   .nav { padding: 0 40px; }
 
-  .hero { padding: 60px 40px 60px; grid-template-columns: 1fr; gap: 40px; }
-  .hero-headline { font-size: 40px; }
+  .hero { padding: 80px 40px 60px; grid-template-columns: 1fr; gap: 40px; }
+  .hero-headline { font-size: 40px; line-height: 1.15; }
+  .hero-right { gap: 24px; }
+  .hero-right p { font-size: 15px; line-height: 1.6; }
 
   .hero-image-band { height: 560px; }
   .hero-band-content { padding: 0 40px; }
@@ -2015,7 +2037,10 @@ h1 { text-align: left; }
     gap: 2px;
   }
 
-  .value-card { padding: 60px 32px 40px; }
+  .value-card { padding: 48px 32px 36px; gap: 12px; }
+  .value-card-icon { width: 56px; height: 56px; margin-bottom: 16px; }
+  .value-card h3 { font-size: 22px; }
+  .value-card p { font-size: 15px; }
 
   .portfolio {
     grid-template-columns: 1fr;
@@ -2023,30 +2048,36 @@ h1 { text-align: left; }
     gap: 40px;
   }
 
-  .portfolio-name { font-size: 32px; }
+  .portfolio-name { font-size: 32px; line-height: 44px; }
   .portfolio-featured { min-height: 300px; }
+  .portfolio-logo-name { font-size: 48px; }
 
-  .testimonials { padding: 60px 40px; }
+  .testimonials { padding: 60px 40px 120px; }
 
   .testimonial-grid {
     grid-template-columns: 1fr;
     gap: 24px;
   }
 
-  .news { padding: 60px 40px; }
+  .testimonial-card { padding: 32px 28px 28px; }
+  .testimonial-card p { font-size: 17px; line-height: 1.65; }
+  .testimonial-divider { margin: 48px 0 20px; }
+
+  .news { padding: 60px 40px 120px; }
 
   .news-grid { grid-template-columns: 1fr; }
   .news-card { height: 320px; }
 
-  .acquisition { padding: 80px 40px; }
+  .acquisition { padding: 120px 40px; }
 
-  .cta-banner { padding: 80px 40px; }
+  .cta-banner { padding: 120px 40px; }
 
-  .footer { padding: 48px 40px 32px; }
+  .footer { padding: 0 40px 32px; }
 
   .footer-inner {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto auto;
+    padding-bottom: 120px;
   }
 
   .footer-col--newsletter {
@@ -2054,54 +2085,76 @@ h1 { text-align: left; }
     grid-row: 2;
   }
 
+  .footer-pixels {
+    margin-left: -40px;
+    margin-bottom: 48px;
+  }
+
   .section-title { font-size: 36px; }
 }
 
 /* ── Mobile (≤640px) ── */
 @media (max-width: 640px) {
-  .nav { padding: 0 24px; }
+  .nav { padding: 0 24px; height: 64px; }
+  .nav-logo-block { width: 64px; height: 64px; }
+  .nav-logo-img { width: 36px; }
   .nav-links { display: none; }
   .nav-cta { display: none; }
   .nav-hamburger { display: flex; margin-left: auto; }
+  .mobile-menu { top: 64px; }
 
-  .hero { padding: 48px 24px 48px; grid-template-columns: 1fr; }
-  .hero-headline { font-size: 32px; }
+  .hero { padding: 56px 24px 48px; grid-template-columns: 1fr; gap: 28px; }
+  .hero-headline { font-size: 32px; line-height: 1.2; }
+  .hero-right { gap: 20px; }
+  .hero-right p { font-size: 15px; line-height: 1.6; }
 
   .hero-image-band { height: 420px; }
-  .hero-band-content { padding: 0 24px; }
-  .hero-band-content { grid-template-columns: 1fr; align-items: end; }
+  .hero-band-content { padding: 0 24px; grid-template-columns: 1fr; align-items: end; }
   .hero-band-cta { justify-self: start; margin-top: 24px; }
 
   .value-props { padding: 0 24px; gap: 2px; }
-  .value-card { padding: 48px 24px 32px; }
+  .value-card { padding: 36px 24px 28px; gap: 10px; }
+  .value-card-icon { width: 48px; height: 48px; margin-bottom: 14px; }
+  .value-card h3 { font-size: 20px; }
+  .value-card p { font-size: 15px; line-height: 1.65; }
 
-  .portfolio { padding: 48px 24px; }
+  .portfolio { padding: 48px 24px; gap: 32px; }
   .portfolio-featured { min-height: 240px; }
-  .portfolio-logo-name { font-size: 40px; }
-  .portfolio-name { font-size: 28px; }
+  .portfolio-logo-name { font-size: 36px; }
+  .portfolio-name { font-size: 26px; line-height: 36px; }
 
-  .testimonials { padding: 48px 24px; }
+  .testimonials { padding: 48px 24px 80px; }
   .testimonial-card { padding: 28px 24px 24px; }
-  .testimonial-card p { font-size: 16px; }
+  .testimonial-card p { font-size: 16px; line-height: 1.6; }
+  .testimonial-divider { margin: 40px 0 20px; }
+  .testimonial-name { font-size: 15px; }
+  .testimonial-role { font-size: 14px; }
 
-  .news { padding: 48px 24px; }
+  .news { padding: 48px 24px 80px; }
   .news-card { height: 240px; }
 
-  .acquisition { padding: 60px 24px; }
-  .acquisition-body { font-size: 20px; }
+  .acquisition { padding: 80px 24px; }
+  .acquisition-body { font-size: 20px; line-height: 1.5; }
 
-  .cta-banner { padding: 60px 24px; min-height: 220px; }
+  .cta-banner { padding: 80px 24px; min-height: 220px; }
 
-  .footer { padding: 40px 24px 28px; }
+  .footer { padding: 0 24px 28px; }
 
   .footer-inner {
     grid-template-columns: 1fr;
     gap: 32px;
+    padding-bottom: 80px;
   }
 
   .footer-col--newsletter { grid-column: unset; }
 
-  .newsletter-form { flex-direction: column; align-items: stretch; }
+  .footer-pixels {
+    margin-left: -24px;
+    margin-bottom: 40px;
+  }
+
+  .newsletter-form { flex-direction: column; align-items: stretch; border-radius: 16px; padding: 16px; gap: 12px; }
+  .newsletter-form .btn { width: 100%; }
   .newsletter-input-wrap { width: 100%; }
 
   .section-title { font-size: 28px; margin-bottom: 32px; }
