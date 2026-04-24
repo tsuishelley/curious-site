@@ -1628,7 +1628,7 @@ h1 { text-align: left; }
 .post-body {
   max-width: 720px;
   margin: 0 auto;
-  padding: 0 var(--h-pad) 120px;
+  padding: 0 24px 120px;
 }
 
 .post-body p {
