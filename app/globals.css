@@ -1541,7 +1541,7 @@ h1 { text-align: left; }
 
 .post-date {
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 400;
   color: var(--dark);
 }
 
@@ -1561,13 +1561,14 @@ h1 { text-align: left; }
 }
 
 .post-title {
-  font-size: clamp(36px, 4.5vw, 64px);
+  font-size: clamp(32px, 3.6vw, 52px);
   font-weight: 400;
   text-align: center;
-  line-height: 1.1;
+  line-height: 1.15;
   color: var(--dark);
   letter-spacing: -0.01em;
-  margin-bottom: 24px;
+  margin: 0 auto 24px;
+  max-width: 720px;
 }
 
 .post-subtitle {
@@ -1582,9 +1583,9 @@ h1 { text-align: left; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 960px;
+  max-width: 720px;
   margin: 0 auto;
-  padding: 20px var(--h-pad);
+  padding: 20px 0;
   border-top: 1px solid rgba(49, 43, 43, 0.1);
 }
 
@@ -1625,7 +1626,7 @@ h1 { text-align: left; }
 }
 
 .post-body {
-  max-width: 760px;
+  max-width: 720px;
   margin: 0 auto;
   padding: 0 var(--h-pad) 120px;
 }
@@ -1739,10 +1740,12 @@ h1 { text-align: left; }
 .post-related-back {
   margin-top: 64px;
   font-size: 14px;
-  color: var(--dark-70);
+  color: var(--red);
+  opacity: 1;
 }
 
-.post-related-back a:hover { color: var(--dark); }
+.post-related-back a { color: var(--red); }
+.post-related-back a:hover { opacity: 0.75; }
 
 /* ── STACKING IMAGES ── */
 .stack-scroll-outer {
