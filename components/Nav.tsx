@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { asset } from '@/lib/basePath';
 
 const SEARCH_DATA = {
   companies: ['Buildfire', 'Convox', 'Uservoice', 'Polymer', 'Avenue'],
@@ -58,7 +59,7 @@ export default function Nav() {
       <nav className="nav">
         <Link href="/" className="nav-logo-block">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/images/logo-curious.svg" alt="Curious Holdings" className="nav-logo-img" />
+          <img src={asset('/images/logo-curious.svg')} alt="Curious Holdings" className="nav-logo-img" />
         </Link>
         <div className="nav-links">
           <Link href="/companies">Companies</Link>

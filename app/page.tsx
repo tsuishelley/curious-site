@@ -3,6 +3,7 @@ import PortfolioSection from '@/components/PortfolioSection';
 import TestimonialsCarousel from '@/components/TestimonialsCarousel';
 import HeroHeadline from '@/components/HeroHeadline';
 import AcquisitionSection from '@/components/AcquisitionSection';
+import { asset } from '@/lib/basePath';
 import SlideUpText from '@/components/SlideUpText';
 import ValueCards from '@/components/ValueCards';
 import NewsSection from '@/components/NewsSection';
@@ -62,7 +63,7 @@ export default async function HomePage() {
       <Link href="/approach" className="hero-image-band">
         <video
           className="hero-band-img"
-          src="/videos/leaves-rustling.mp4"
+          src={asset('/videos/leaves-rustling.mp4')}
           autoPlay
           loop
           muted
