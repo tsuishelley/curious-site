@@ -896,8 +896,9 @@ h1 { text-align: left; }
 }
 
 .footer-pixels {
-  margin-left: calc(-1 * var(--h-pad));
-  width: calc(100% + 2 * var(--h-pad));
+  position: relative;
+  left: calc(-1 * var(--h-pad));
+  width: 100vw;
   margin-bottom: 64px;
 }
 

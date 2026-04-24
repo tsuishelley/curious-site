@@ -56,15 +56,12 @@ export default function Footer() {
     setVisibleCells(new Set());
   }, [pathname]);
 
-  // Measure container width → cols
+  // Measure viewport width → cols
   useEffect(() => {
-    const el = pixelRef.current;
-    if (!el) return;
-    const update = () => setCols(Math.floor(el.offsetWidth / PIXEL_SIZE));
+    const update = () => setCols(Math.floor(window.innerWidth / PIXEL_SIZE));
     update();
-    const ro = new ResizeObserver(update);
-    ro.observe(el);
-    return () => ro.disconnect();
+    window.addEventListener('resize', update);
+    return () => window.removeEventListener('resize', update);
   }, []);
 
   // Trigger animation when scrolled into view
@@ -96,7 +93,6 @@ export default function Footer() {
           display: 'grid',
           gridTemplateColumns: cols > 0 ? `repeat(${cols}, 1fr)` : 'none',
           gridTemplateRows: `repeat(${ROWS}, ${PIXEL_SIZE}px)`,
-          width: '100%',
         }}
       >
         {cols > 0 && Array.from({ length: cols * ROWS }, (_, i) => (
