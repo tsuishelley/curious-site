@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useFadeIn } from '@/lib/useFadeIn';
 import Image from 'next/image';
+import { asset } from '@/lib/basePath';
 
 const TESTIMONIALS = [
   {
@@ -13,7 +14,7 @@ const TESTIMONIALS = [
     authorName: 'Andrew Gertig',
     authorRole: 'Co-Founder of',
     authorCompany: 'Polymer',
-    avatarSrc: '/images/avatar-andrew.png',
+    avatarSrc: asset('/images/avatar-andrew.png'),
   },
   {
     quote: [
@@ -23,7 +24,7 @@ const TESTIMONIALS = [
     authorName: 'Steven Mulcahy',
     authorRole: 'Former CEO of',
     authorCompany: 'Avenue',
-    avatarSrc: '/images/avatar-steven.png',
+    avatarSrc: asset('/images/avatar-steven.png'),
   },
   {
     quote: [
@@ -33,7 +34,7 @@ const TESTIMONIALS = [
     authorName: 'Ian Blair',
     authorRole: 'Founder of',
     authorCompany: 'Buildfire',
-    avatarSrc: '/images/avatar-andrew.png',
+    avatarSrc: asset('/images/avatar-andrew.png'),
   },
   {
     quote: [
@@ -43,7 +44,7 @@ const TESTIMONIALS = [
     authorName: 'Marcus Nelson',
     authorRole: 'Co-Founder of',
     authorCompany: 'Uservoice',
-    avatarSrc: '/images/avatar-steven.png',
+    avatarSrc: asset('/images/avatar-steven.png'),
   },
   {
     quote: [
@@ -53,7 +54,7 @@ const TESTIMONIALS = [
     authorName: 'Steve McKay',
     authorRole: 'Former Chairman of',
     authorCompany: 'Convox',
-    avatarSrc: '/images/avatar-andrew.png',
+    avatarSrc: asset('/images/avatar-andrew.png'),
   },
   {
     quote: [
@@ -63,7 +64,7 @@ const TESTIMONIALS = [
     authorName: 'Gaurabh Mathure',
     authorRole: 'Co-Founder of',
     authorCompany: 'Phenom',
-    avatarSrc: '/images/avatar-steven.png',
+    avatarSrc: asset('/images/avatar-steven.png'),
   },
 ];
 

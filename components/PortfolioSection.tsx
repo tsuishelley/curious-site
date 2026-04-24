@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useFadeIn } from '@/lib/useFadeIn';
+import { asset } from '@/lib/basePath';
 
 interface Company {
   name: string;
@@ -10,11 +11,11 @@ interface Company {
 }
 
 const COMPANIES: Company[] = [
-  { name: 'Avenue', acquisitionDate: 'July 2025', logoSrc: '/images/avenue-logo.svg' },
-  { name: 'Buildfire', acquisitionDate: 'October 2024', logoSrc: '/images/buildfire-logo.svg' },
-  { name: 'Convox', acquisitionDate: 'April 2024', logoSrc: '/images/convox-logo.svg' },
-  { name: 'Polymer', acquisitionDate: 'July 2025', logoSrc: '/images/polymer-logo.svg' },
-  { name: 'Uservoice', acquisitionDate: 'November 2025', logoSrc: '/images/uservoice-logo.svg' },
+  { name: 'Avenue', acquisitionDate: 'July 2025', logoSrc: asset('/images/avenue-logo.svg') },
+  { name: 'Buildfire', acquisitionDate: 'October 2024', logoSrc: asset('/images/buildfire-logo.svg') },
+  { name: 'Convox', acquisitionDate: 'April 2024', logoSrc: asset('/images/convox-logo.svg') },
+  { name: 'Polymer', acquisitionDate: 'July 2025', logoSrc: asset('/images/polymer-logo.svg') },
+  { name: 'Uservoice', acquisitionDate: 'November 2025', logoSrc: asset('/images/uservoice-logo.svg') },
 ];
 
 export default function PortfolioSection() {

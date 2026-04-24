@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { asset } from '@/lib/basePath';
 import PortfolioSection from '@/components/PortfolioSection';
 import TestimonialsCarousel from '@/components/TestimonialsCarousel';
 import HeroHeadline from '@/components/HeroHeadline';
@@ -16,19 +17,19 @@ const FALLBACK_VALUES = [
     title: 'Permanent Capital',
     description:
       "Each acquisition we make is in the frame of decades to build companies that can evolve alongside transformational shifts. We're focused on legacy, resilience, and continuous reinvention, not raising additional funds or future exits.",
-    iconSrc: '/images/icon-barchart.svg',
+    iconSrc: asset('/images/icon-barchart.svg'),
   },
   {
     title: 'Operational Chops',
     description:
       'We combine deep software experience with a bias toward emerging technology. We move quickly to adopt, master, and operationalize new tools to improve efficiency, decision-making, and performance.',
-    iconSrc: '/images/icon-network.svg',
+    iconSrc: asset('/images/icon-network.svg'),
   },
   {
     title: 'Certainty of Close',
     description:
       'Our process is built on efficiency and certainty. We close within 60 days and pay cash. Founders decide whether to stay with the business or hand it off. No golden handcuffs.',
-    iconSrc: '/images/icon-handshake.svg',
+    iconSrc: asset('/images/icon-handshake.svg'),
   },
 ];
 
