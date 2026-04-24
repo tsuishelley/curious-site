@@ -1,11 +1,9 @@
 import Link from 'next/link';
-import { asset } from '@/lib/basePath';
 import PortfolioSection from '@/components/PortfolioSection';
 import TestimonialsCarousel from '@/components/TestimonialsCarousel';
 import HeroHeadline from '@/components/HeroHeadline';
 import AcquisitionSection from '@/components/AcquisitionSection';
 import SlideUpText from '@/components/SlideUpText';
-import CTASection from '@/components/CTASection';
 import ValueCards from '@/components/ValueCards';
 import NewsSection from '@/components/NewsSection';
 import { getValuePropositions, getNewsArticles } from '@/lib/contentful';
@@ -17,19 +15,19 @@ const FALLBACK_VALUES = [
     title: 'Permanent Capital',
     description:
       "Each acquisition we make is in the frame of decades to build companies that can evolve alongside transformational shifts. We're focused on legacy, resilience, and continuous reinvention, not raising additional funds or future exits.",
-    iconSrc: asset('/images/icon-barchart.svg'),
+    iconSrc: '/images/icon-barchart.svg',
   },
   {
     title: 'Operational Chops',
     description:
       'We combine deep software experience with a bias toward emerging technology. We move quickly to adopt, master, and operationalize new tools to improve efficiency, decision-making, and performance.',
-    iconSrc: asset('/images/icon-network.svg'),
+    iconSrc: '/images/icon-network.svg',
   },
   {
     title: 'Certainty of Close',
     description:
       'Our process is built on efficiency and certainty. We close within 60 days and pay cash. Founders decide whether to stay with the business or hand it off. No golden handcuffs.',
-    iconSrc: asset('/images/icon-handshake.svg'),
+    iconSrc: '/images/icon-handshake.svg',
   },
 ];
 
@@ -64,7 +62,7 @@ export default async function HomePage() {
       <Link href="/approach" className="hero-image-band">
         <video
           className="hero-band-img"
-          src={asset('/videos/leaves-rustling.mp4')}
+          src="/videos/leaves-rustling.mp4"
           autoPlay
           loop
           muted
@@ -101,8 +99,6 @@ export default async function HomePage() {
       {/* NEWS */}
       <NewsSection />
 
-      {/* CTA BANNER */}
-      <CTASection />
     </>
   );
 }

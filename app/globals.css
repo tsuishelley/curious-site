@@ -86,6 +86,7 @@ h1 { text-align: left; }
   border: none;
   line-height: 1.15;
   white-space: nowrap;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
 .btn-sm { font-size: 14px; }
@@ -107,9 +108,19 @@ h1 { text-align: left; }
   color: var(--cream);
 }
 
+.btn:hover,
+.btn-outline-dark:hover,
+.btn-outline-white:hover,
+.btn-dark:hover {
+  background: var(--red);
+  color: white;
+  border-color: var(--red);
+}
+
 .section-title {
   font-size: 48px;
   font-weight: 400;
+  line-height: 56px;
   text-align: center;
   color: var(--cream);
   margin-bottom: 48px;
@@ -160,15 +171,15 @@ h1 { text-align: left; }
 
 .nav-cta {
   transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
-  background: var(--dark) !important;
-  border-color: var(--dark) !important;
-  color: var(--cream) !important;
+  background: var(--red) !important;
+  border-color: var(--red) !important;
+  color: white !important;
 }
 
 .nav-cta:hover {
-  background: #3a3333 !important;
-  border-color: #3a3333 !important;
-  color: var(--cream) !important;
+  background: var(--red) !important;
+  border-color: var(--red) !important;
+  color: white !important;
 }
 
 /* ── NAV SEARCH ── */
@@ -368,7 +379,7 @@ h1 { text-align: left; }
 .hero-headline {
   font-size: 48px;
   font-weight: 400;
-  line-height: 60px;
+  line-height: 56px;
   color: var(--dark);
 }
 
@@ -543,7 +554,7 @@ h1 { text-align: left; }
 .portfolio-name {
   font-size: 48px;
   font-weight: 400;
-  line-height: 1.15;
+  line-height: 56px;
   color: rgba(245, 245, 245, 0.13);
   cursor: pointer;
   background: none;
@@ -973,7 +984,7 @@ h1 { text-align: left; }
 .about-headline {
   font-size: 48px;
   font-weight: 400;
-  line-height: 1.05;
+  line-height: 56px;
   color: var(--dark);
   max-width: 900px;
   margin-bottom: 64px;
@@ -1067,54 +1078,47 @@ h1 { text-align: left; }
 }
 
 .how-we-work-section {
-  background: var(--dark);
-  padding: 100px var(--h-pad);
+  background: var(--cream);
+  padding: 120px 0px 0px;
 }
 
 .how-we-work-title {
   font-size: 36px;
   font-weight: 400;
-  color: var(--cream);
+  color: var(--dark);
   text-align: center;
   margin-bottom: 56px;
 }
 
-.how-we-work-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-
-.how-we-work-card {
+.how-we-work-list {
   display: flex;
   flex-direction: column;
-  background: rgba(245, 245, 242, 0.07);
-  border-radius: 6px;
-  padding: 32px;
-  min-height: 340px;
+  margin: 0px 80px;
+  border-bottom: 1px solid rgba(49, 43, 43, 0.15);
 }
 
-.how-we-work-icon {
-  width: 32px;
-  height: 32px;
-  background: var(--red);
-  flex-shrink: 0;
-  margin-bottom: 48px;
+.how-we-work-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 120px;
+  padding: 60px 100px;
+  border-top: 1px solid rgba(49, 43, 43, 0.15);
 }
 
-.how-we-work-card h3 {
+.how-we-work-row h3 {
   font-size: 24px;
   font-weight: 400;
-  color: var(--cream);
+  color: var(--dark);
   line-height: 1.3;
-  margin-bottom: auto;
+  flex: 0 0 350px;
 }
 
-.how-we-work-card p {
+.how-we-work-row p {
   font-size: 16px;
   line-height: 1.7;
-  color: var(--white-70);
-  margin-top: 48px;
+  color: var(--dark);
+  opacity: 0.6;
+  flex: 1;
 }
 
 /* ── Companies Page ── */
@@ -1131,7 +1135,7 @@ h1 { text-align: left; }
   font-size: 48px;
   font-weight: 400;
   color: var(--dark);
-  line-height: 1.05;
+  line-height: 56px;
 }
 
 .companies-desc {
@@ -1160,7 +1164,7 @@ h1 { text-align: left; }
 .companies-name {
   font-size: 48px;
   font-weight: 400;
-  line-height: 1.15;
+  line-height: 56px;
   color: rgba(32, 28, 28, 0.15);
   cursor: pointer;
 }
@@ -1233,6 +1237,7 @@ h1 { text-align: left; }
 .writing-title {
   font-size: 48px;
   font-weight: 400;
+  line-height: 56px;
   color: var(--dark);
   margin-bottom: 32px;
 }
@@ -1377,7 +1382,7 @@ h1 { text-align: left; }
 @media (max-width: 1024px) {
   .about-section { padding: 0 40px 60px; }
   .how-we-work-section { padding: 72px 40px; }
-  .how-we-work-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .how-we-work-list { max-width: 100%; }
 
   .companies-header { padding: 80px 40px 40px; gap: 40px; }
   .companies-portfolio { padding: 0 40px 60px; gap: 40px; }
@@ -1393,7 +1398,7 @@ h1 { text-align: left; }
   .about-section { padding: 0 24px 48px; }
   .team-grid { grid-template-columns: repeat(3, 1fr); gap: 48px 24px; }
   .how-we-work-section { padding: 56px 24px; }
-  .how-we-work-grid { grid-template-columns: 1fr; gap: 12px; }
+  .how-we-work-row { flex-direction: column; gap: 12px; padding: 24px 0; }
   .how-we-work-title { font-size: 28px; margin-bottom: 40px; }
 
   .companies-header { grid-template-columns: 1fr; padding: 60px 24px 32px; gap: 24px; }
@@ -1424,7 +1429,7 @@ h1 { text-align: left; }
 .page-hero-headline {
   font-size: 48px;
   font-weight: 400;
-  line-height: 1.05;
+  line-height: 56px;
   color: var(--dark);
   max-width: 900px;
 }
@@ -1855,6 +1860,7 @@ h1 { text-align: left; }
 .company-card-name {
   font-size: 48px;
   font-weight: 400;
+  line-height: 56px;
   color: var(--cream);
 }
 

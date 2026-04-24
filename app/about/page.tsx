@@ -1,23 +1,22 @@
 import type { Metadata } from 'next';
 import PixelHover from '@/components/PixelHover';
 import PageHero from '@/components/PageHero';
-import { asset } from '@/lib/basePath';
 
 export const metadata: Metadata = { title: 'About' };
 
 const TEAM = [
-  { name: 'Andrew Dumont', role: 'Founder and CEO',           photo: asset('/images/andrew.avif') },
-  { name: 'Kathy Xu',      role: 'Finance Lead',              photo: asset('/images/kathy.jpeg') },
-  { name: 'Phil Trench',   role: 'Investment Lead',           photo: asset('/images/phil.avif') },
-  { name: 'Justin Diraddio', role: 'Investment Analyst',      photo: asset('/images/justin.avif') },
-  { name: 'Shelley Tsui',  role: 'Product and Design Lead',   photo: asset('/images/shelley.avif') },
-  { name: 'Kirstey Smith', role: 'Operations Lead',           photo: asset('/images/kirstey.avif') },
-  { name: 'Nicholas Thoni',   role: 'CEO of Convox',    photo: asset('/images/nick.avif') },
-  { name: 'Samantha Forster', role: 'CEO of Buildfire', photo: asset('/images/sam.avif') },
-  { name: 'Jessica Gertig',   role: 'CEO of Polymer',   photo: asset('/images/jess.avif') },
-  { name: 'Srey Sankar',      role: 'CEO of Avenue',    photo: asset('/images/srey.avif') },
-  { name: 'Jennifer Cullem',  role: 'CEO of Uservoice', photo: asset('/images/jen.avif') },
-  { name: 'Eva Shang',        role: 'Finance Analyst',        photo: asset('/images/eva.avif') },
+  { name: 'Andrew Dumont', role: 'Founder and CEO',           photo: '/images/andrew.avif' },
+  { name: 'Kathy Xu',      role: 'Finance Lead',              photo: '/images/kathy.jpeg' },
+  { name: 'Phil Trench',   role: 'Investment Lead',           photo: '/images/phil.avif' },
+  { name: 'Justin Diraddio', role: 'Investment Analyst',      photo: '/images/justin.avif' },
+  { name: 'Shelley Tsui',  role: 'Product and Design Lead',   photo: '/images/shelley.avif' },
+  { name: 'Kirstey Smith', role: 'Operations Lead',           photo: '/images/kirstey.avif' },
+  { name: 'Nicholas Thoni',   role: 'CEO of Convox',    photo: '/images/nick.avif' },
+  { name: 'Samantha Forster', role: 'CEO of Buildfire', photo: '/images/sam.avif' },
+  { name: 'Jessica Gertig',   role: 'CEO of Polymer',   photo: '/images/jess.avif' },
+  { name: 'Srey Sankar',      role: 'CEO of Avenue',    photo: '/images/srey.avif' },
+  { name: 'Jennifer Cullem',  role: 'CEO of Uservoice', photo: '/images/jen.avif' },
+  { name: 'Eva Shang',        role: 'Finance Analyst',        photo: '/images/eva.avif' },
 ];
 
 const HOW_WE_WORK = [
@@ -52,10 +51,12 @@ export default function AboutPage() {
     <>
       <PageHero
         lines={[
-          { text: "We're builders who believe the best companies are built over decades, not quarters." },
+          { text: "We're builders who believe the" },
+          { text: "best companies are built over" },
+          { text: "decades, not quarters." },
         ]}
         description="Our team of operators bring over two decades of lived experience in customer acquisition, growth, product design, and financial management to help Curious businesses grow more sustainably."
-        primaryCta={{ label: 'Join Our Team', href: '/#contact' }}
+        primaryCta={{ label: 'Join Our Team', href: "https://careers.curious.vc/" }}
       />
 
       <section className="about-section">
@@ -74,10 +75,9 @@ export default function AboutPage() {
 
       <section className="how-we-work-section">
         <h2 className="how-we-work-title">How we work</h2>
-        <div className="how-we-work-grid">
+        <div className="how-we-work-list">
           {HOW_WE_WORK.map((v) => (
-            <div key={v.title} className="how-we-work-card">
-              <div className="how-we-work-icon" />
+            <div key={v.title} className="how-we-work-row">
               <h3>{v.title}</h3>
               <p>{v.body}</p>
             </div>

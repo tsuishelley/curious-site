@@ -25,7 +25,7 @@ export default function PageHeroHeadline({ lines }: Props) {
         <span key={i} className="hero-line-wrap">
           <span
             className={`hero-line${visible ? ' hero-line--visible' : ''}${line.italic ? ' italic-serif' : ''}`}
-            style={{ animationDelay: `${i * 0.12}s` }}
+            style={{ animationDelay: `${i * 0.18}s` }}
           >
             {line.text}
           </span>

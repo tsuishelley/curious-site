@@ -3,8 +3,47 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { ARTICLES } from '@/lib/articles';
+import { usePixelHover } from '@/components/PixelHover';
 
 const FILTERS = ['All', 'Announcements', 'Perspectives', 'Portfolio Updates'];
+
+const COLS = 10;
+const ROWS = 10;
+
+function WritingCardImage() {
+  const { hovered, visibleCells, startAnimation, stopAnimation } = usePixelHover(COLS, ROWS);
+  const total = COLS * ROWS;
+  return (
+    <div
+      className="writing-card-image"
+      onMouseEnter={startAnimation}
+      onMouseLeave={stopAnimation}
+      style={{ position: 'relative', overflow: 'hidden' }}
+    >
+      {hovered && (
+        <div
+          className="pixel-grid"
+          style={{
+            gridTemplateColumns: `repeat(${COLS}, 1fr)`,
+            gridTemplateRows: `repeat(${ROWS}, 1fr)`,
+          }}
+        >
+          {Array.from({ length: total }, (_, i) => (
+            <div
+              key={i}
+              className="pixel-cell"
+              style={{
+                background: 'var(--red)',
+                opacity: visibleCells.has(i) ? 1 : 0,
+                transition: 'opacity 0.12s ease',
+              }}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default function WritingPage() {
   const [activeFilter, setActiveFilter] = useState('All');
@@ -50,7 +89,7 @@ export default function WritingPage() {
             className={`writing-card writing-card--anim${mounted ? ' writing-card--visible' : ''}`}
             style={{ animationDelay: mounted ? `${0.2 + i * 0.07}s` : '0s' }}
           >
-            <div className="writing-card-image" />
+            <WritingCardImage />
             <div className="writing-card-body">
               <p className="writing-card-title">{article.title}</p>
               <p className="writing-card-meta">

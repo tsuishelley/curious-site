@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import PortfolioSection from '@/components/PortfolioSection';
 import AcquisitionSection from '@/components/AcquisitionSection';
 import SlideUpText from '@/components/SlideUpText';
-import CTASection from '@/components/CTASection';
 import PageHero from '@/components/PageHero';
 
 export const metadata: Metadata = { title: 'Companies' };
@@ -43,8 +42,6 @@ export default function CompaniesPage() {
         <AcquisitionSection />
       </section>
 
-      {/* CTA */}
-      <CTASection />
     </>
   );
 }
