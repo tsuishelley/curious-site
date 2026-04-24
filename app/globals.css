@@ -1625,14 +1625,14 @@ h1 { text-align: left; }
 .post-share-toast {
   position: absolute;
   top: calc(100% + 10px);
-  right: 0;
+  left: 50%;
+  transform: translateX(-50%) translateY(-4px);
   background: rgba(49, 43, 43, 0.08);
   color: var(--dark);
   font-size: 14px;
   padding: 10px 22px;
   border-radius: 10px;
   opacity: 0;
-  transform: translateY(-4px);
   pointer-events: none;
   transition: opacity 0.18s ease, transform 0.18s ease;
   white-space: nowrap;
@@ -1640,7 +1640,7 @@ h1 { text-align: left; }
 
 .post-share-toast--visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateX(-50%) translateY(0);
 }
 
 .post-hero-image {
