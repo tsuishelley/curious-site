@@ -1680,7 +1680,6 @@ h1 { text-align: left; }
 /* ── Related Articles ── */
 .post-related {
   background: var(--cream);
-  border-top: 1px solid rgba(49, 43, 43, 0.1);
   padding: 80px var(--h-pad) 100px;
 }
 
