@@ -507,7 +507,7 @@ h1 { text-align: left; }
 
 /* ── VALUE PROPS ── */
 .value-props {
-  background: var(--cream);
+  background: var(--dark);
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
@@ -515,7 +515,7 @@ h1 { text-align: left; }
 }
 
 .value-card {
-  background: rgba(49, 43, 43, 0.05);
+  background: var(--white-05);
   padding: 38px 32px 34px 38px;
   display: flex;
   flex-direction: column;
@@ -537,25 +537,24 @@ h1 { text-align: left; }
   width: 72px;
   height: 72px;
   margin-bottom: 24px;
-  filter: brightness(0);
 }
 
 .value-card h3 {
   font-size: 24px;
   font-weight: 400;
-  color: var(--dark);
+  color: var(--cream);
   line-height: normal;
 }
 
 .value-card p {
   font-size: 16px;
   line-height: 1.7;
-  color: var(--dark-70);
+  color: var(--white-70);
 }
 
 /* ── PORTFOLIO ── */
 .portfolio {
-  background: var(--cream);
+  background: var(--dark);
   padding: 80px var(--h-pad);
   display: grid;
   grid-template-columns: 1fr 2fr;
@@ -573,7 +572,7 @@ h1 { text-align: left; }
   font-size: 48px;
   font-weight: 400;
   line-height: 56px;
-  color: rgba(49, 43, 43, 0.13);
+  color: rgba(245, 245, 245, 0.13);
   cursor: pointer;
   background: none;
   border: none;
@@ -583,13 +582,13 @@ h1 { text-align: left; }
   transition: color 0.2s;
 }
 
-.portfolio-name--active { color: var(--dark); }
-.portfolio-name:hover { color: rgba(49, 43, 43, 0.4); }
-.portfolio-name--active:hover { color: var(--dark); }
+.portfolio-name--active { color: #f5f5f5; }
+.portfolio-name:hover { color: rgba(245, 245, 245, 0.4); }
+.portfolio-name--active:hover { color: #f5f5f5; }
 
 .portfolio-featured {
   position: relative;
-  background: rgba(49, 43, 43, 0.05);
+  background: rgba(245, 245, 245, 0.05);
   min-height: 500px;
   display: flex;
   align-items: center;
@@ -621,8 +620,8 @@ h1 { text-align: left; }
 }
 
 .pill-outline-cream {
-  border-color: rgba(49, 43, 43, 0.3);
-  color: var(--dark);
+  border-color: rgba(245, 245, 242, 0.5);
+  color: var(--cream);
 }
 
 .portfolio-logo-block {
@@ -634,25 +633,25 @@ h1 { text-align: left; }
 .portfolio-logo {
   width: 55%;
   height: auto;
-  filter: brightness(0);
+  filter: brightness(0) invert(1);
 }
 
 .portfolio-logo-name {
   font-size: 62px;
   font-weight: 500;
-  color: var(--dark);
+  color: #f5f5f5;
   letter-spacing: -1.25px;
   font-family: 'Inter', var(--font);
 }
 
 /* ── TESTIMONIALS ── */
 .testimonials {
-  background: var(--cream);
+  background: var(--dark);
   padding: 80px var(--h-pad) 200px;
 }
 
 .testimonials .section-title {
-  color: var(--dark);
+  color: var(--cream);
 }
 
 .testimonial-overflow {
@@ -684,7 +683,7 @@ h1 { text-align: left; }
 }
 
 .testimonial-card {
-  background: rgba(49, 43, 43, 0.05);
+  background: var(--white-05);
   padding: 40px 38px 32px;
   display: flex;
   flex-direction: column;
@@ -700,12 +699,12 @@ h1 { text-align: left; }
 .testimonial-card p {
   font-size: 18px;
   line-height: 1.7;
-  color: var(--dark-70);
+  color: rgba(245, 245, 242, 0.70);
 }
 
 .testimonial-divider {
   border: none;
-  border-top: 1px solid rgba(49, 43, 43, 0.15);
+  border-top: 1px solid rgba(245, 245, 242, 0.15);
   margin: 70px 0 24px;
 }
 
@@ -732,7 +731,7 @@ h1 { text-align: left; }
 .testimonial-name,
 .testimonial-card p.testimonial-name {
   font-size: 16px;
-  color: var(--dark);
+  color: var(--cream);
   line-height: 1;
   margin-bottom: 4px;
 }
@@ -740,7 +739,7 @@ h1 { text-align: left; }
 .testimonial-role,
 .testimonial-card p.testimonial-role {
   font-size: 16px;
-  color: var(--dark-70);
+  color: var(--white-70);
   line-height: 1;
 }
 
@@ -762,7 +761,7 @@ h1 { text-align: left; }
   border: none;
   padding: 0;
   cursor: pointer;
-  background: var(--dark);
+  background: var(--cream);
   opacity: 0.2;
 }
 
