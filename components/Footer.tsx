@@ -1,20 +1,115 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
+import { usePathname } from 'next/navigation';
+
+const PIXEL_SIZE = 80;
+const ROWS = 2;
+const FILL_RATIO = 0.42;
+
+function shuffle<T>(arr: T[]): T[] {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
 
 export default function Footer() {
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  const [cols, setCols] = useState(0);
+  const [visibleCells, setVisibleCells] = useState<Set<number>>(new Set());
+  const pixelRef = useRef<HTMLDivElement>(null);
+  const timersRef = useRef<ReturnType<typeof setTimeout>[]>([]);
+  const animatedRef = useRef(false);
+  const pathname = usePathname();
+
+  const clearTimers = () => {
+    timersRef.current.forEach(clearTimeout);
+    timersRef.current = [];
+  };
+
+  const runAnimation = useCallback((numCols: number) => {
+    if (animatedRef.current) return;
+    animatedRef.current = true;
+    clearTimers();
+
+    const total = numCols * ROWS;
+    const count = Math.floor(total * FILL_RATIO);
+    const chosen = shuffle(Array.from({ length: total }, (_, i) => i)).slice(0, count);
+    const newSet = new Set<number>();
+
+    timersRef.current = chosen.map((cellIdx, i) =>
+      setTimeout(() => {
+        newSet.add(cellIdx);
+        setVisibleCells(new Set(newSet));
+      }, i * 22)
+    );
+  }, []);
+
+  // Reset on page navigation
+  useEffect(() => {
+    animatedRef.current = false;
+    clearTimers();
+    setVisibleCells(new Set());
+  }, [pathname]);
+
+  // Measure container width → cols
+  useEffect(() => {
+    const el = pixelRef.current;
+    if (!el) return;
+    const update = () => setCols(Math.floor(el.offsetWidth / PIXEL_SIZE));
+    update();
+    const ro = new ResizeObserver(update);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+
+  // Trigger animation when scrolled into view
+  useEffect(() => {
+    const el = pixelRef.current;
+    if (!el || cols === 0) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) runAnimation(cols); },
+      { threshold: 0.1 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [cols, runAnimation]);
+
+  useEffect(() => () => clearTimers(), []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!email.trim()) return;
-    // TODO: wire up to mailing list / API
     setSubmitted(true);
   };
 
   return (
     <footer className="footer">
+      <div
+        ref={pixelRef}
+        style={{
+          display: 'grid',
+          gridTemplateColumns: cols > 0 ? `repeat(${cols}, 1fr)` : 'none',
+          gridTemplateRows: `repeat(${ROWS}, ${PIXEL_SIZE}px)`,
+          width: '100%',
+        }}
+      >
+        {cols > 0 && Array.from({ length: cols * ROWS }, (_, i) => (
+          <div
+            key={i}
+            style={{
+              background: 'var(--red)',
+              opacity: visibleCells.has(i) ? 1 : 0,
+              transition: 'opacity 0.15s ease',
+            }}
+          />
+        ))}
+      </div>
+
       <div className="footer-inner">
         <div className="footer-col footer-col--nav">
           <a href="/about">About</a>
