@@ -48,7 +48,7 @@ export default async function HomePage() {
         <div className="hero-left">
           <HeroHeadline />
         </div>
-        <div className="hero-right">
+        <div className="hero-right page-hero-right">
           <p className="hero-description">
             Curious is a long-term holding company that buys and grows software companies with empathy. We're operate as builders first, buyers second.
           </p>

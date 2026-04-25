@@ -45,7 +45,7 @@ function NewsCardImage() {
 
 export default function NewsSection() {
   const { ref, visible } = useFadeIn();
-  const featured = ARTICLES.slice(0, 2);
+  const featured = ARTICLES.slice(0, 3);
 
   return (
     <section className="news" ref={ref as React.RefObject<HTMLElement>}>

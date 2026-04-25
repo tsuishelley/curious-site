@@ -1,37 +1,46 @@
 import type { Metadata } from 'next';
-import PortfolioSection from '@/components/PortfolioSection';
 import AcquisitionSection from '@/components/AcquisitionSection';
 import SlideUpText from '@/components/SlideUpText';
 import PageHero from '@/components/PageHero';
 
 export const metadata: Metadata = { title: 'Companies' };
 
+const MAJORITY_COUNT = 5;
 const MINORITY_COUNT = 15;
 
 export default function CompaniesPage() {
   return (
     <>
-      {/* Header */}
       <PageHero
         lines={[
-          { text: 'Software companies' },
-          { text: 'built to last.', italic: true },
+          { text: 'Since 2017, we\'ve been' },
+          { text: 'building and investing in' },
+          { text: 'software companies.' },
         ]}
-        description="Curious acquires early-stage software firms generating $1M–$5M in revenue, operating as a controlling or long-term holding company with a specialization in technology and B2B products."
+        description="We're building the acquisition partner we always wished existed: one that's long-term, operationally deep, and AI-native by design, helping companies evolve with the future rather than get left behind by it."
         primaryCta={{ label: 'Get in Touch', href: '/#contact' }}
         secondaryCta={{ label: 'Our Approach', href: '/approach' }}
       />
 
-      {/* Portfolio */}
-      <PortfolioSection />
+      <section className="companies-dark-section">
+        <div className="companies-dark-list">
+          <div className="companies-dark-row">
+            <h2 className="companies-dark-heading">Majority Owned Companies</h2>
+            <div className="majority-grid">
+              {Array.from({ length: MAJORITY_COUNT }).map((_, i) => (
+                <div key={i} className="majority-box" />
+              ))}
+            </div>
+          </div>
 
-      {/* Minority Investments */}
-      <section className="minority-section">
-        <h2 className="minority-title">Minority Investments</h2>
-        <div className="minority-grid">
-          {Array.from({ length: MINORITY_COUNT }).map((_, i) => (
-            <div key={i} className="minority-box" />
-          ))}
+          <div className="companies-dark-row">
+            <h2 className="companies-dark-heading">Minority Investments</h2>
+            <div className="minority-grid">
+              {Array.from({ length: MINORITY_COUNT }).map((_, i) => (
+                <div key={i} className="minority-box" />
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
@@ -41,7 +50,6 @@ export default function CompaniesPage() {
         <SlideUpText text="$1M – $5M" className="acquisition-range" />
         <AcquisitionSection />
       </section>
-
     </>
   );
 }

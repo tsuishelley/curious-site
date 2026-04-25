@@ -26,7 +26,8 @@
 .search-overlay ::selection,
 .cta-banner ::selection,
 .acquisition ::selection,
-.how-we-work-section ::selection {
+.how-we-work-section ::selection,
+.companies-dark-section ::selection {
   background: var(--red);
   color: #fff;
 }
@@ -786,7 +787,7 @@ h1 { text-align: left; }
 
 .news-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   column-gap: 40px;
   row-gap: 100px;
 }
@@ -804,7 +805,7 @@ h1 { text-align: left; }
 
 .news-card-image {
   width: 100%;
-  aspect-ratio: 3 / 2;
+  aspect-ratio: 1 / 1;
   background: rgba(49, 43, 43, 0.06);
   position: relative;
   overflow: hidden;
@@ -859,17 +860,18 @@ h1 { text-align: left; }
   font-weight: 400;
   line-height: 1.15;
   color: var(--dark);
-  margin: 60px 0 60px;
+  margin: 120px 0 120px;
 }
 
 .acquisition-body {
   font-size: clamp(24px, 3.33vw, 48px);
   line-height: 60px;
-  max-width: 1100px;
+  max-width: 800px;
+  text-align: left;
 }
 
 .acquisition-body p + p {
-  margin-top: 1em;
+  margin-top: 1.2em;
 }
 
 /* ── CTA BANNER ── */
@@ -1146,105 +1148,57 @@ h1 { text-align: left; }
 }
 
 /* ── Companies Page ── */
-.companies-header {
-  background: var(--cream);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  padding: 120px var(--h-pad) 48px;
-  align-items: start;
-}
-
-.companies-title {
-  font-size: 48px;
-  font-weight: 400;
-  color: var(--dark);
-  line-height: 56px;
-}
-
-.companies-desc {
-  font-size: 16px;
-  line-height: 1.7;
-  color: var(--dark-70);
-  padding-top: 8px;
-}
-
-.companies-portfolio {
-  background: var(--cream);
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 60px;
-  padding: 0 var(--h-pad) 80px;
-  align-items: start;
-}
-
-.companies-names {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  padding-top: 8px;
-}
-
-.companies-name {
-  font-size: 48px;
-  font-weight: 400;
-  line-height: 56px;
-  color: rgba(32, 28, 28, 0.15);
-  cursor: pointer;
-}
-
-.companies-name--active {
-  color: var(--dark);
-}
-
-.companies-featured-wrap {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.companies-featured-pill {
-  align-self: flex-end;
-}
-
 .pill-outline-dark {
   border-color: var(--dark);
   color: var(--dark);
 }
 
-.companies-featured-box {
-  background: rgba(49, 43, 43, 0.05);
+.companies-dark-section {
+  background: var(--dark);
+  padding: 120px 0 200px;
+}
+
+.companies-dark-list {
+  margin: 0 var(--h-pad);
+}
+
+.companies-dark-row {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 16px;
-  padding: 60px;
-  min-height: 300px;
+  gap: 48px;
+  padding: 80px 0;
 }
 
-.minority-section {
-  background: var(--cream);
-  padding: 80px var(--h-pad);
-  text-align: center;
-  border-top: 1px solid rgba(49, 43, 43, 0.08);
-}
-
-.minority-title {
+.companies-dark-heading {
   font-size: 36px;
   font-weight: 400;
-  color: var(--dark);
-  margin-bottom: 40px;
+  color: var(--cream);
+  line-height: 1.3;
+  text-align: center;
+}
+
+.majority-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  width: 100%;
+}
+
+.majority-box {
+  background: var(--white-05);
+  aspect-ratio: 4 / 3;
 }
 
 .minority-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 12px;
+  width: 100%;
 }
 
 .minority-box {
-  background: rgba(49, 43, 43, 0.06);
+  background: var(--white-05);
   aspect-ratio: 4 / 3;
 }
 
@@ -1412,12 +1366,10 @@ h1 { text-align: left; }
   .how-we-work-row h3 { flex: 0 0 240px; font-size: 22px; }
   .how-we-work-row p { font-size: 15px; }
 
-  .companies-header { padding: 80px 40px 40px; gap: 40px; }
-  .companies-title { font-size: 40px; line-height: 48px; }
-  .companies-portfolio { padding: 0 40px 60px; gap: 40px; }
-  .companies-name { font-size: 32px; line-height: 44px; }
-  .minority-section { padding: 60px 40px; }
-  .minority-title { font-size: 32px; }
+  .companies-dark-section { padding: 80px 0 120px; }
+  .companies-dark-list { margin: 0 40px; }
+  .companies-dark-row { gap: 48px; padding: 40px 0; }
+  .companies-dark-heading { flex: 0 0 240px; font-size: 22px; }
   .minority-grid { grid-template-columns: repeat(4, 1fr); }
 
   .writing-section { padding: 80px 40px 160px; }
@@ -1438,13 +1390,10 @@ h1 { text-align: left; }
   .how-we-work-row p { font-size: 15px; }
   .how-we-work-title { font-size: 26px; margin-bottom: 32px; }
 
-  .companies-header { grid-template-columns: 1fr; padding: 60px 24px 32px; gap: 24px; }
-  .companies-title { font-size: 32px; line-height: 40px; }
-  .companies-portfolio { grid-template-columns: 1fr; padding: 0 24px 48px; }
-  .companies-name { font-size: 28px; line-height: 36px; }
-  .companies-featured-box { padding: 40px 24px; min-height: 220px; }
-  .minority-section { padding: 48px 24px; }
-  .minority-title { font-size: 26px; margin-bottom: 28px; }
+  .companies-dark-section { padding: 60px 0 80px; }
+  .companies-dark-list { margin: 0 24px; }
+  .companies-dark-row { flex-direction: column; gap: 24px; padding: 28px 0; }
+  .companies-dark-heading { flex: 1 1 auto; font-size: 20px; }
   .minority-grid { grid-template-columns: repeat(3, 1fr); }
 
   .writing-section { padding: 60px 24px 100px; }

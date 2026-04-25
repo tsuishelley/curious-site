@@ -53,13 +53,6 @@ export default function StackingImages({ cards }: Props) {
             const arrived = progress >= i;
             const translateY = arrived ? 0 : 100; // % of card height
 
-            // Scale down as subsequent cards pile on top
-            const stackDepth = Math.max(0, progress - i - 1); // how many cards are on top
-            const scale = Math.max(0.88, 1 - stackDepth * 0.04);
-
-            // Slight upward shift as cards stack (creates the "pushed back" feel)
-            const stackTranslateY = -stackDepth * 12;
-
             return (
               <div
                 key={i}
@@ -77,7 +70,7 @@ export default function StackingImages({ cards }: Props) {
                 <div
                   className="stack-card"
                   style={{
-                    transform: `translateY(${arrived ? stackTranslateY : 80}%) scale(${scale})`,
+                    transform: `translateY(${arrived ? 0 : 80}%)`,
                     transition: 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
                     opacity: arrived ? 1 : 0,
                   }}
