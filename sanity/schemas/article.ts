@@ -26,6 +26,12 @@ export const article = defineType({
     defineField({ name: 'date', title: 'Date', type: 'date', validation: (r) => r.required() }),
     defineField({ name: 'readTime', title: 'Read Time', type: 'string' }),
     defineField({ name: 'author', title: 'Author', type: 'string' }),
+    defineField({
+      name: 'heroImage',
+      title: 'Hero Image',
+      type: 'image',
+      options: { hotspot: true },
+    }),
     defineField({ name: 'body', title: 'Body', type: 'text', rows: 12 }),
   ],
   preview: {

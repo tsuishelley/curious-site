@@ -60,7 +60,12 @@ export default async function ArticlePage({ params }: Props) {
         <ShareButton />
       </div>
 
-      <div className="post-hero-image" />
+      {article.heroImage ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img src={article.heroImage} alt={article.title} className="post-hero-image" />
+      ) : (
+        <div className="post-hero-image" />
+      )}
 
       <article
         className="post-body"

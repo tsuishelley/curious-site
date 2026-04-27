@@ -8,8 +8,9 @@ import type { Article } from '@/lib/articles';
 const FILTERS = ['All', 'Announcements', 'Perspectives', 'Portfolio Updates'];
 const COLS = 10;
 const ROWS = 10;
+const PAGE_SIZE = 15;
 
-function WritingCardImage() {
+function WritingCardImage({ heroImage, title }: { heroImage?: string; title: string }) {
   const { hovered, visibleCells, startAnimation, stopAnimation } = usePixelHover(COLS, ROWS);
   const total = COLS * ROWS;
   return (
@@ -19,6 +20,10 @@ function WritingCardImage() {
       onMouseLeave={stopAnimation}
       style={{ position: 'relative', overflow: 'hidden' }}
     >
+      {heroImage && (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img src={heroImage} alt={title} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
+      )}
       {hovered && (
         <div
           className="pixel-grid"
@@ -46,6 +51,7 @@ function WritingCardImage() {
 
 export default function WritingPageClient({ articles }: { articles: Article[] }) {
   const [activeFilter, setActiveFilter] = useState('All');
+  const [page, setPage] = useState(1);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -53,11 +59,27 @@ export default function WritingPageClient({ articles }: { articles: Article[] })
     return () => clearTimeout(id);
   }, []);
 
-  const PAGE_SIZE = 15;
-  const filtered = (activeFilter === 'All'
+  const filtered = activeFilter === 'All'
     ? articles
-    : articles.filter((a) => a.category === activeFilter)
-  ).slice(0, PAGE_SIZE);
+    : articles.filter((a) => a.category === activeFilter);
+
+  const totalPages = Math.ceil(filtered.length / PAGE_SIZE);
+  const paginated = filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
+
+  function handleFilter(f: string) {
+    setActiveFilter(f);
+    setPage(1);
+  }
+
+  function handlePrev() {
+    setPage((p) => Math.max(1, p - 1));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function handleNext() {
+    setPage((p) => Math.min(totalPages, p + 1));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 
   return (
     <section className="writing-section">
@@ -72,7 +94,7 @@ export default function WritingPageClient({ articles }: { articles: Article[] })
           <button
             key={f}
             className={`writing-filter${activeFilter === f ? ' writing-filter--active' : ''}`}
-            onClick={() => setActiveFilter(f)}
+            onClick={() => handleFilter(f)}
           >
             {f}
           </button>
@@ -80,14 +102,14 @@ export default function WritingPageClient({ articles }: { articles: Article[] })
       </div>
 
       <div className="writing-grid">
-        {filtered.map((article, i) => (
+        {paginated.map((article, i) => (
           <Link
             key={article.slug}
             href={`/news/${article.slug}`}
             className={`writing-card writing-card--anim${mounted ? ' writing-card--visible' : ''}`}
             style={{ animationDelay: mounted ? `${0.2 + i * 0.07}s` : '0s' }}
           >
-            <WritingCardImage />
+            <WritingCardImage heroImage={article.heroImage} title={article.title} />
             <div className="writing-card-body">
               <p className="writing-card-title">{article.title}</p>
               <p className="writing-card-meta">
@@ -100,10 +122,16 @@ export default function WritingPageClient({ articles }: { articles: Article[] })
         ))}
       </div>
 
-      <div className="writing-pagination">
-        <a href="#">← Previous</a>
-        <a href="#">Next →</a>
-      </div>
+      {totalPages > 1 && (
+        <div className="writing-pagination">
+          {page > 1 && (
+            <button onClick={handlePrev}>← Previous</button>
+          )}
+          {page < totalPages && (
+            <button onClick={handleNext} style={{ marginLeft: 'auto' }}>Next →</button>
+          )}
+        </div>
+      )}
     </section>
   );
 }

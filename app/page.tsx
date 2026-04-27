@@ -7,7 +7,8 @@ import { asset } from '@/lib/basePath';
 import SlideUpText from '@/components/SlideUpText';
 import ValueCards from '@/components/ValueCards';
 import NewsSection from '@/components/NewsSection';
-import { getValuePropositions, getNewsArticles } from '@/lib/contentful';
+import { getValuePropositions } from '@/lib/contentful';
+import { fetchArticles } from '@/lib/sanity';
 
 /* ── Fallback data (used when Contentful is not configured) ── */
 
@@ -34,9 +35,9 @@ const FALLBACK_VALUES = [
 
 
 export default async function HomePage() {
-  const [values, news] = await Promise.all([
+  const [values, articles] = await Promise.all([
     getValuePropositions(),
-    getNewsArticles(),
+    fetchArticles(),
   ]);
 
   const valueCards = values.length ? values : FALLBACK_VALUES;
@@ -98,7 +99,7 @@ export default async function HomePage() {
       </section>
 
       {/* NEWS */}
-      <NewsSection />
+      <NewsSection articles={articles} />
 
     </>
   );

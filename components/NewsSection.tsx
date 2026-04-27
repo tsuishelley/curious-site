@@ -2,13 +2,13 @@
 
 import Link from 'next/link';
 import { useFadeIn } from '@/lib/useFadeIn';
-import { ARTICLES } from '@/lib/articles';
 import { usePixelHover } from '@/components/PixelHover';
+import type { Article } from '@/lib/articles';
 
 const COLS = 10;
 const ROWS = 8;
 
-function NewsCardImage() {
+function NewsCardImage({ heroImage, title }: { heroImage?: string; title: string }) {
   const { hovered, visibleCells, startAnimation, stopAnimation } = usePixelHover(COLS, ROWS);
   const total = COLS * ROWS;
   return (
@@ -18,6 +18,10 @@ function NewsCardImage() {
       onMouseLeave={stopAnimation}
       style={{ position: 'relative', overflow: 'hidden' }}
     >
+      {heroImage && (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img src={heroImage} alt={title} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
+      )}
       {hovered && (
         <div
           className="pixel-grid"
@@ -43,9 +47,9 @@ function NewsCardImage() {
   );
 }
 
-export default function NewsSection() {
+export default function NewsSection({ articles }: { articles: Article[] }) {
   const { ref, visible } = useFadeIn();
-  const featured = ARTICLES.slice(0, 3);
+  const featured = articles.slice(0, 3);
 
   return (
     <section className="news" ref={ref as React.RefObject<HTMLElement>}>
@@ -54,7 +58,7 @@ export default function NewsSection() {
         <div className="news-grid">
           {featured.map((article) => (
             <Link key={article.slug} href={`/news/${article.slug}`} className="news-card">
-              <NewsCardImage />
+              <NewsCardImage heroImage={article.heroImage} title={article.title} />
               <div className="news-card-body">
                 <p className="news-card-title">{article.title}</p>
                 <p className="news-card-meta">

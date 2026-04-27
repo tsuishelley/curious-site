@@ -9,7 +9,7 @@ export const sanityClient = projectId
       projectId,
       dataset,
       apiVersion: '2024-01-01',
-      useCdn: true,
+      useCdn: false,
     })
   : null;
 
@@ -31,9 +31,10 @@ export async function fetchArticles(): Promise<Article[]> {
       date: string;
       readTime?: string;
       author?: string;
+      heroImage?: { asset?: { url: string } };
       body?: string;
     }>
-  >(`*[_type == "article"] | order(date desc)`);
+  >(`*[_type == "article"] | order(date desc) { ..., heroImage { asset-> { url } } }`);
 
   return results.map((a) => ({
     title: a.title,
@@ -46,6 +47,7 @@ export async function fetchArticles(): Promise<Article[]> {
     })(),
     readTime: a.readTime,
     author: a.author,
+    heroImage: a.heroImage?.asset?.url,
     body: a.body,
   }));
 }

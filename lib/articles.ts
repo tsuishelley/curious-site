@@ -6,6 +6,7 @@ export interface Article {
   slug: string;
   readTime?: string;
   author?: string;
+  heroImage?: string;
   body?: string;
 }
 
