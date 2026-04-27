@@ -1363,9 +1363,15 @@ h1 { text-align: left; }
   border-top: 1px solid rgba(49, 43, 43, 0.1);
 }
 
-.writing-pagination a {
+.writing-pagination a,
+.writing-pagination button {
   font-size: 14px;
   color: var(--red);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
 }
 
 /* ── Responsive — about / companies / writing ── */
