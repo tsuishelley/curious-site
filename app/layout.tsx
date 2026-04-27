@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import { Libre_Franklin } from 'next/font/google';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
+import { ARTICLES } from '@/lib/articles';
+import { fetchArticles, fetchCompanies } from '@/lib/sanity';
 import './globals.css';
 
 const libreFranklin = Libre_Franklin({
@@ -20,11 +22,17 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const [sanityArticles, sanityCompanies] = await Promise.all([fetchArticles(), fetchCompanies()]);
+  const articles = sanityArticles.length > 0 ? sanityArticles : ARTICLES;
+  const companyNames = sanityCompanies.length > 0
+    ? sanityCompanies.map((c) => c.name)
+    : ['Avenue', 'Buildfire', 'Convox', 'Polymer', 'Uservoice'];
+
   return (
     <html lang="en" className={libreFranklin.variable}>
       <body>
-        <Nav />
+        <Nav articles={articles} companyNames={companyNames} />
         <main>{children}</main>
         <Footer />
       </body>

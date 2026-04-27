@@ -4,30 +4,34 @@ import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { asset } from '@/lib/basePath';
+import type { Article } from '@/lib/articles';
 
-const SEARCH_DATA = {
-  companies: ['Buildfire', 'Convox', 'Uservoice', 'Polymer', 'Avenue'],
-  articles: [
-    'Shaping Insight: Uservoice Brand Evolution',
-    'The Free Trial Trap: Why More Product Exposure Isn\'t Always Better',
-  ],
-};
+interface SearchData {
+  companyNames: string[];
+  articles: Article[];
+}
 
-function getResults(q: string) {
+function getResults(q: string, data: SearchData) {
   if (!q.trim()) return null;
   const lower = q.toLowerCase();
   return {
-    companies: SEARCH_DATA.companies.filter((c) => c.toLowerCase().includes(lower)),
-    articles: SEARCH_DATA.articles.filter((a) => a.toLowerCase().includes(lower)),
+    companies: data.companyNames.filter((c) => c.toLowerCase().includes(lower)),
+    articles: data.articles.filter((a) => a.title.toLowerCase().includes(lower) || a.category.toLowerCase().includes(lower)),
   };
 }
 
-export default function Nav() {
+interface NavProps {
+  articles?: Article[];
+  companyNames?: string[];
+}
+
+export default function Nav({ articles = [], companyNames = [] }: NavProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [query, setQuery] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
+  const searchData: SearchData = { articles, companyNames };
 
   // Focus input when overlay opens
   useEffect(() => {
@@ -94,7 +98,7 @@ export default function Nav() {
 
       {/* SEARCH OVERLAY */}
       {searchOpen && (() => {
-        const results = getResults(query);
+        const results = getResults(query, searchData);
         const totalCount = results ? results.companies.length + results.articles.length : 0;
         return (
           <div className="search-overlay search-overlay--open">
@@ -129,7 +133,7 @@ export default function Nav() {
                 <div className="search-results">
                   {results.companies.length > 0 && (
                     <div className="search-results-group">
-                      <p className="search-results-heading">COMPANIES</p>
+                      <p className="search-results-heading">Companies</p>
                       {results.companies.map((name) => (
                         <Link
                           key={name}
@@ -146,15 +150,15 @@ export default function Nav() {
 
                   {results.articles.length > 0 && (
                     <div className="search-results-group">
-                      <p className="search-results-heading">WRITING</p>
-                      {results.articles.map((title) => (
+                      <p className="search-results-heading">Writing</p>
+                      {results.articles.map((a) => (
                         <Link
-                          key={title}
-                          href="/news"
+                          key={a.slug}
+                          href={`/news/${a.slug}`}
                           className="search-result-item"
                           onClick={() => setSearchOpen(false)}
                         >
-                          <span className="search-result-name">{title}</span>
+                          <span className="search-result-name">{a.title}</span>
                           <hr className="search-result-divider" />
                         </Link>
                       ))}

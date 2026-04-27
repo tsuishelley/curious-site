@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import PixelHover from '@/components/PixelHover';
 import PageHero from '@/components/PageHero';
+import HowWeWorkList from '@/components/HowWeWorkList';
 import { asset } from '@/lib/basePath';
 
 export const metadata: Metadata = { title: 'About' };
@@ -76,14 +77,7 @@ export default function AboutPage() {
 
       <section className="how-we-work-section">
         <h2 className="how-we-work-title">How we work</h2>
-        <div className="how-we-work-list">
-          {HOW_WE_WORK.map((v) => (
-            <div key={v.title} className="how-we-work-row">
-              <h3>{v.title}</h3>
-              <p>{v.body}</p>
-            </div>
-          ))}
-        </div>
+        <HowWeWorkList items={HOW_WE_WORK} />
       </section>
     </>
   );

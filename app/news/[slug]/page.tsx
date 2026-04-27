@@ -2,30 +2,41 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ARTICLES } from '@/lib/articles';
+import { fetchArticles } from '@/lib/sanity';
 import ShareButton from '@/components/ShareButton';
+import RelatedCardImage from '@/components/RelatedCardImage';
 
 interface Props {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
+}
+
+async function getArticles() {
+  const sanity = await fetchArticles();
+  return sanity.length > 0 ? sanity : ARTICLES;
 }
 
 export async function generateStaticParams() {
-  return ARTICLES.map((a) => ({ slug: a.slug }));
+  const articles = await getArticles();
+  return articles.map((a) => ({ slug: a.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const article = ARTICLES.find((a) => a.slug === params.slug);
+  const { slug } = await params;
+  const articles = await getArticles();
+  const article = articles.find((a) => a.slug === slug);
   return { title: article?.title ?? 'Article' };
 }
 
-export default function ArticlePage({ params }: Props) {
-  const article = ARTICLES.find((a) => a.slug === params.slug);
+export default async function ArticlePage({ params }: Props) {
+  const { slug } = await params;
+  const articles = await getArticles();
+  const article = articles.find((a) => a.slug === slug);
   if (!article) notFound();
 
-  const related = ARTICLES.filter((a) => a.slug !== article.slug).slice(0, 3);
+  const related = articles.filter((a) => a.slug !== article.slug).slice(0, 3);
 
   return (
     <>
-      {/* ── Article Header ── */}
       <header className="post-header">
         <div className="post-meta-row">
           <span className="post-date">{article.date}</span>
@@ -38,63 +49,30 @@ export default function ArticlePage({ params }: Props) {
             </>
           )}
         </div>
-
         <h1 className="post-title">{article.title}</h1>
-
-        {article.subtitle && (
-          <p className="post-subtitle">{article.subtitle}</p>
-        )}
+        {article.subtitle && <p className="post-subtitle">{article.subtitle}</p>}
       </header>
 
-      {/* ── Utility Bar ── */}
       <div className="post-utility-bar">
         <div className="post-utility-left">
-          {article.author && (
-            <span className="post-author">By {article.author}</span>
-          )}
+          {article.author && <span className="post-author">By {article.author}</span>}
         </div>
         <ShareButton />
       </div>
 
-      {/* ── Hero Image ── */}
       <div className="post-hero-image" />
 
-      {/* ── Article Body ── */}
-      <article className="post-body">
-        {article.body ? (
-          article.body.split('\n\n').map((paragraph, i) => (
-            <p key={i}>{paragraph}</p>
-          ))
-        ) : (
-          <>
-            <p>
-              We started by talking to customers. Not about design — about what they trusted.
-              What they feared losing. The answers were consistent: reliability, transparency,
-              and a sense that the software had been built by people who understood the problem
-              at a deep level.
-            </p>
-            <p>
-              That gave us our brief. The new identity needed to feel considered without feeling
-              cold. Modern without feeling like a rebrand for its own sake. We landed on a system
-              built around clarity — clean type, generous whitespace, and a palette anchored in
-              warmth.
-            </p>
-            <p>
-              The result is a product that looks like it belongs in 2026, while feeling like it
-              was built by the same team customers have trusted since the beginning. That
-              continuity matters more than most people realize.
-            </p>
-          </>
-        )}
-      </article>
+      <article
+        className="post-body"
+        dangerouslySetInnerHTML={{ __html: article.body ?? '' }}
+      />
 
-      {/* ── Related Articles ── */}
       {related.length > 0 && (
         <section className="post-related">
           <div className="post-related-grid">
             {related.map((a) => (
               <Link key={a.slug} href={`/news/${a.slug}`} className="post-related-card">
-                <div className="post-related-image" />
+                <RelatedCardImage />
                 <div className="post-related-body">
                   <p className="post-related-card-title">{a.title}</p>
                   <p className="post-related-card-meta">

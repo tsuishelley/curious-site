@@ -307,8 +307,7 @@ h1 { text-align: left; }
 }
 
 .search-results-heading {
-  font-size: 12px;
-  letter-spacing: 0.12em;
+  font-size: 14px;
   color: rgba(49, 43, 43, 0.4);
   margin-bottom: 20px;
   display: flex;
@@ -1131,6 +1130,17 @@ h1 { text-align: left; }
   border-top: 1px solid rgba(49, 43, 43, 0.15);
 }
 
+.how-we-work-row--anim {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.how-we-work-row--anim.how-we-work-row--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .how-we-work-row h3 {
   font-size: 24px;
   font-weight: 400;
@@ -1651,6 +1661,34 @@ h1 { text-align: left; }
   font-size: 18px;
   line-height: 1.75;
   margin-bottom: 8px;
+}
+
+.post-body a {
+  color: var(--dark);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.post-body a:hover {
+  color: var(--red);
+}
+
+.post-body strong {
+  font-weight: 600;
+}
+
+.post-body em {
+  font-style: italic;
+}
+
+.post-body h2 + p,
+.post-body h3 + p {
+  margin-top: 0;
+}
+
+.post-body p:empty,
+.post-body br {
+  display: none;
 }
 
 /* ── Related Articles ── */
