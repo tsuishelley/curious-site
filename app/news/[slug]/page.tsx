@@ -77,7 +77,7 @@ export default async function ArticlePage({ params }: Props) {
           <div className="post-related-grid">
             {related.map((a) => (
               <Link key={a.slug} href={`/news/${a.slug}`} className="post-related-card">
-                <RelatedCardImage />
+                <RelatedCardImage heroImage={a.heroImage} title={a.title} />
                 <div className="post-related-body">
                   <p className="post-related-card-title">{a.title}</p>
                   <p className="post-related-card-meta">

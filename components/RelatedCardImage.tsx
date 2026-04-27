@@ -5,7 +5,7 @@ import { usePixelHover } from '@/components/PixelHover';
 const COLS = 10;
 const ROWS = 10;
 
-export default function RelatedCardImage() {
+export default function RelatedCardImage({ heroImage, title }: { heroImage?: string; title: string }) {
   const { hovered, visibleCells, startAnimation, stopAnimation } = usePixelHover(COLS, ROWS);
   const total = COLS * ROWS;
   return (
@@ -15,6 +15,10 @@ export default function RelatedCardImage() {
       onMouseLeave={stopAnimation}
       style={{ position: 'relative', overflow: 'hidden' }}
     >
+      {heroImage && (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img src={heroImage} alt={title} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
+      )}
       {hovered && (
         <div
           className="pixel-grid"
