@@ -35,6 +35,8 @@ jobs:
         run: npm run build
         env:
           NEXT_PUBLIC_BASE_PATH: '/curious-site'
+          NEXT_PUBLIC_SANITY_PROJECT_ID: '9d49k71g'
+          NEXT_PUBLIC_SANITY_DATASET: 'production'
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
