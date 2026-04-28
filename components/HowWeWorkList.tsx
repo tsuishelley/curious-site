@@ -38,7 +38,7 @@ export default function HowWeWorkList({ items }: { items: Item[] }) {
   return (
     <div className="how-we-work-list">
       {items.map((item, i) => (
-        <HowWeWorkRow key={item.title} {...item} delay={i * 0.25} />
+        <HowWeWorkRow key={item.title} {...item} delay={0.5 + i * 0.18} />
       ))}
     </div>
   );
