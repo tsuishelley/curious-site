@@ -107,7 +107,7 @@ export default function WritingPageClient({ articles }: { articles: Article[] })
             key={article.slug}
             href={`/news/${article.slug}`}
             className={`writing-card writing-card--anim${mounted ? ' writing-card--visible' : ''}`}
-            style={{ animationDelay: mounted ? `${0.3 + i * 0.12}s` : '0s' }}
+            style={{ animationDelay: mounted ? `${0.5 + i * 0.18}s` : '0s' }}
           >
             <WritingCardImage heroImage={article.heroImage} title={article.title} />
             <div className="writing-card-body">
