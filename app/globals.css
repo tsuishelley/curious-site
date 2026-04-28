@@ -501,7 +501,7 @@ h1 { text-align: left; }
 .fade-content--visible {
   opacity: 1;
   transform: translateY(0);
-  transition-delay: 0.7s;
+  transition-delay: 0.25s;
 }
 
 

@@ -39,7 +39,7 @@ export default function PortfolioSection() {
         ))}
       </div>
 
-      <div className={`portfolio-featured ${fadeClass}`} style={{ transitionDelay: '0.1s' }}>
+      <div className={`portfolio-featured ${fadeClass}`}>
         {active.acquisitionDate && (
           <span className="pill pill-outline-cream portfolio-chip">
             Acquired {active.acquisitionDate}
