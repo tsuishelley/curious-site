@@ -501,7 +501,7 @@ h1 { text-align: left; }
 .fade-content--visible {
   opacity: 1;
   transform: translateY(0);
-  transition-delay: 0.25s;
+  transition-delay: 0.7s;
 }
 
 
@@ -774,6 +774,10 @@ h1 { text-align: left; }
 .news {
   background: var(--cream);
   padding: 80px var(--h-pad) 200px;
+}
+
+.news .fade-content--visible {
+  transition-delay: 0.2s;
 }
 
 .news .section-title,
