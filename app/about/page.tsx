@@ -12,7 +12,6 @@ const TEAM = [
   { name: 'Phil Trench',   role: 'Investment Lead',           photo: '/images/phil.avif' },
   { name: 'Justin Diraddio', role: 'Investment Analyst',      photo: '/images/justin.avif' },
   { name: 'Shelley Tsui',  role: 'Product and Design Lead',   photo: '/images/shelley.avif' },
-  { name: 'Kirstey Smith', role: 'Operations Lead',           photo: '/images/kirstey.avif' },
   { name: 'Nicholas Thoni',   role: 'CEO of Convox',    photo: '/images/nick.avif' },
   { name: 'Samantha Forster', role: 'CEO of Buildfire', photo: '/images/sam.avif' },
   { name: 'Jessica Gertig',   role: 'CEO of Polymer',   photo: '/images/jess.avif' },
